@@ -9,7 +9,7 @@ import { Recipe } from '../recipe.model';
 export class RecipeListComponent implements OnInit {
 
   recipes: Recipe[] = [
-    new Recipe('Test Recipe', 'This is a test description for test recipe', 'https://www.foodnetwork.com/recipes/food-network-kitchen/tuscan-chicken-skillet-5421728')
+    new Recipe('Test Recipe', 'This is a test description for test recipe', 'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2019/08/meatball-black-bean-chilli.jpg?itok=n1KA3vhT')
   ];
 
   constructor() { }
