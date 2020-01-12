@@ -1,1 +1,5 @@
-<h1>Server component is being viewing.</h1>
+<div class = "container">
+    <h1>Server component is being viewing.</h1>
+    <p>Server name: {{serverName}} with PID: {{serverPID}} is {{serverStatus}}</p>
+    <button [disabled] = "toggleButtonDisabled" (click) = "toggoleServerStatus()">Toggle Server Status</button>
+</div>
