@@ -1,0 +1,13 @@
+<div class = "container">
+    <h1>Server component is being viewing.</h1>
+
+    <h2>Input Server Information</h2>
+    <input type="text" placeholder="Server Name" [(ngModel)] = "serverName">
+    <input type="text" placeholder="Server Name" [ngModel] = "serverName">
+    <h3>Display ServerInformation</h3>
+    <h5>Server Name: {{serverName}}</h5>
+    <h5>Server PID: {{serverPID}}</h5>
+    <h5>Server Status: {{serverStatus}}</h5>
+    <p>Server name: {{serverName}} with PID: {{serverPID}} is {{serverStatus}}</p>
+    <button [disabled] = "toggleButtonDisabled" (click) = "toggoleServerStatus()">Toggle Server Status</button>
+</div>
