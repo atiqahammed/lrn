@@ -1,19 +1,12 @@
+<app-header></app-header>
 <div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-  <label for="Fname">First Name: </label>
-  <input type="text" name="Fname" placeholder="First Name" [(ngModel)] = "name">
-  <p>First Name: {{name}}</p>
-  <button (click) = "resetName()" [disabled] = "checkName()">Reset Name</button>
-
-  <h1 [ngStyle] = "{color : getColor()}">Directive</h1>
-  <h2 [ngClass] = "{'white': getClassColor()}">This is an example of toggle class.</h2>
-  <p  *ngIf = "flag else elseBlock">Flag is true.</p>
-  <ng-template #elseBlock>
-    <p>Flag is false.</p>
-  </ng-template>
-
-  <button (click) = "toggleFlag()">Toggole Flag</button>
+      <app-recipe></app-recipe>
+      <app-shopping-list></app-shopping-list>
+      
+    </div>
+  </div>
 
 </div>
-
-<app-server></app-server>
