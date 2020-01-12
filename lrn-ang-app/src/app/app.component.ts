@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = 'Atiq';
+  name = '';
+
+  resetName() {
+    this.name = '';
+  }
+
+  checkName() {
+    return (this.name.length < 1) ? true : false;
+  }
+
 }
