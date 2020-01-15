@@ -1,8 +1,12 @@
+<app-header (optionSelected) = "onN"></app-header>
 <div class="container">
-  <label for="Fname"></label>
-  <input type="text" name="Fname" [(ngModel)] = "name">
-  <p>{{name}}</p>
+  <div class="row">
+    <div class="col-md-12">
+
+      <app-recipe></app-recipe>
+      <app-shopping-list></app-shopping-list>
+      
+    </div>
+  </div>
 
 </div>
-
-<app-server></app-server>
