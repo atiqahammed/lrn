@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Demo from './Demo'
+import Avater from './Avatar'
 
-ReactDOM.render(<Demo />, document.getElementById('root'));
+ReactDOM.render(<Avater />, document.getElementById('root'));
 // ReactDOM.render(<Demo />, document.getElementById('demo'));
 
 // If you want your app to work offline and load faster, you can change
