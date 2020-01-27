@@ -9,6 +9,7 @@
   "author": "atiq",
   "license": "ISC",
   "dependencies": {
+    "dummy-json": "^2.0.0",
     "firebase-admin": "^8.9.2"
   }
 }
