@@ -1,11 +1,12 @@
 import React from "react";
+import AboutPage from "./AboutPage";
 
 function HomePage() {
   return (
     <div className="jumbotron">
       <h1>Pluralsight Administration</h1>
       <p>React, Flux, and React Router for ultra-responsive web apps.</p>
-      <a href="/about">About</a>
+      <a href="/about" co>About</a>
     </div>
   );
 }
