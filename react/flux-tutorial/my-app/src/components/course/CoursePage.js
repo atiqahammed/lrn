@@ -4,7 +4,7 @@ import CourseList from "./CourseList";
 
 function CoursePage () {
 
-  const [cources, setCourse] = useState([]);
+  const [courses, setCourse] = useState([]);
 
   useEffect( () => {
     getCourses().then((_courses) => {
@@ -18,7 +18,7 @@ function CoursePage () {
           <h1>Courses</h1>
           <p>This page contains the list of course to have CRUD Operation.</p>
         </div>
-        <CourseList cources={cources}/>
+        <CourseList courses={courses}/>
       </>
     );
   
