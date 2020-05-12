@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getCourses } from "../api/courseApi";
-import CourseList from "./course/CourseList";
+import { getCourses } from "../../api/courseApi";
+import CourseList from "./CourseList";
 
 function CoursePage () {
 
@@ -21,8 +21,6 @@ function CoursePage () {
         <CourseList cources={cources}/>
       </>
     );
-    
-  
   
 }
 

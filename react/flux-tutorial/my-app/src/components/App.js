@@ -2,7 +2,7 @@ import React from "react";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import Header from "./common/Header";
-import CoursePage from "./CoursePage";
+import CoursePage from "./course/CoursePage";
 
 function App() {
 
