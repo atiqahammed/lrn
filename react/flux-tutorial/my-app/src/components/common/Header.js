@@ -10,7 +10,7 @@ function Header() {
 		<>
 			<nav>
 				<NavLink to="/" activeStyle={activeLinkStyle}>Home</NavLink> {" | "} 
-				<NavLink to="/course" activeStyle={activeLinkStyle}>Course</NavLink> {" | "} 
+				<NavLink to="/courses" activeStyle={activeLinkStyle}>Course</NavLink> {" | "} 
 				<NavLink to="/about" activeStyle={activeLinkStyle}>About</NavLink>
 			</nav>
 		</>
