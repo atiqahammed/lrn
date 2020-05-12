@@ -10,8 +10,8 @@ function App() {
 		<div className="container-fluid">
 			<Header />
 			<Route path="/" exact component={HomePage} />
-			<Route path="/about" exact component={AboutPage} />
-			<Route path="/course" exact component={CoursePage} />
+			<Route path="/about" component={AboutPage} />
+			<Route path="/course" component={CoursePage} />
 		</div>
 	);
 }
