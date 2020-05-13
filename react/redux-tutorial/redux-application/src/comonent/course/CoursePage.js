@@ -4,15 +4,29 @@ import { connect } from "react-redux";
 // import CourseList from "./CourseList";
 // import { Link } from "react-router-dom";
 // import ManageCoursePage from "./ManageCoursePage";
-import * as courseActions from "../../redux/actions/courseAction"
+import * as courseActions from "../../redux/actions/courseAction";
+import * as authorAction from "../../redux/actions/authorActions";
+import CourseList from "./CourseList";
+import { Link } from "react-router-dom";
 
 class CoursePage extends React.Component {
 
-    state = {
-      course: {
-        title: "" 
-      }
+
+  componentDidMount() {
+
+    if(this.props.courses.length === 0) {
+      this.props.loadCourses();
     }
+    if(this.props.authors.length === 0) {
+      this.props.loadAuthors();
+    }
+    
+  }
+    // state = {
+    //   course: {
+    //     title: "" 
+    //   }
+    // }
 
   // const [courses, setCourse] = useState([]);
 
@@ -24,45 +38,29 @@ class CoursePage extends React.Component {
   
 
 
-  handleChange = (event) => {
-    event.preventDefault();
-    const course = { ...this.state.course, title: event.target.value };
-    this.setState({course: course});
-  }
+  // handleChange = (event) => {
+  //   event.preventDefault();
+  //   const course = { ...this.state.course, title: event.target.value };
+  //   this.setState({course: course});
+  // }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // console.log(this.state)
-    this.props.createCourse( this.state.course);
-  }
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // console.log(this.state)
+  //   this.props.createCourse( this.state.course);
+  // }
     render() {
       return (
         <>
           <div className="jumbotron" >
             <h1>Courses</h1>
             <p>This page contains the list of course to have CRUD Operation.</p>
-            {/* <Link to="/course" className="btn btn-dark" component={ManageCoursePage}>Add New Course</Link> */}
-          </div>
-
-          <div className="container" >
-            <form className="from" onSubmit={this.handleSubmit}>
-              <input 
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.course.title}  
-              />
-              <hr/>
-              <input type="submit" value="save" className="btn btn-dark" />
-            </form>
+            <Link to="/course" className="btn btn-dark">Add New Course</Link>
           </div>
 
           <div className="container jumbotron">
-            {this.props.courses.map((course) => {
-              return <div key={course.title}>{course.title}</div>
-            })}
+            <CourseList courses={this.props.courses} authors={this.props.authors} />
           </div>
-
-          {/* <CourseList courses={courses}/> */}
         </>
       );
     }
@@ -72,7 +70,8 @@ class CoursePage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    courses: state.courses
+    courses: state.courses,
+    authors: state.authors
   }
 }
 
@@ -83,7 +82,9 @@ function mapStateToProps(state) {
 // } 
 
 const mapDispatchToProps = {
-  createCourse: courseActions.createCourse
+  createCourse: courseActions.createCourse,
+  loadCourses: courseActions.loadCourses,
+  loadAuthors: authorAction.loadAuthors
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
