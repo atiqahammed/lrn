@@ -4,6 +4,7 @@ import HomePage from './comonent/home/HomePage';
 import AboutPage from './comonent/about/AboutPage';
 import Header from './comonent/common/Header';
 import PageNotFound from './comonent/common/PageNotFound';
+import CoursePage from './comonent/course/CoursePage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/courses" component={CoursePage} />
         <Route component={PageNotFound} />
       </Switch>
     </>
