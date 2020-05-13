@@ -1,8 +1,10 @@
 import React/*, { useState, useEffect }*/ from "react";
+import { connect } from "react-redux";
 // import { getCourses } from "../../api/courseApi";
 // import CourseList from "./CourseList";
 // import { Link } from "react-router-dom";
 // import ManageCoursePage from "./ManageCoursePage";
+import * as courseActions from "../../redux/actions/courseAction"
 
 class CoursePage extends React.Component {
 
@@ -30,7 +32,8 @@ class CoursePage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state)
+    // console.log(this.state)
+    this.props.createCourse( this.state.course);
   }
     render() {
       return (
@@ -48,9 +51,15 @@ class CoursePage extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.course.title}  
               />
-              <hr />
-              <input type="submit" value="saev" className="btn btn-dark" />
+              <hr/>
+              <input type="submit" value="save" className="btn btn-dark" />
             </form>
+          </div>
+
+          <div className="container jumbotron">
+            {this.props.courses.map((course) => {
+              return <div key={course.title}>{course.title}</div>
+            })}
           </div>
 
           {/* <CourseList courses={courses}/> */}
@@ -61,4 +70,16 @@ class CoursePage extends React.Component {
   
 }
 
-export default CoursePage;
+function mapStateToProps(state) {
+  return {
+    courses: state.courses
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    createCourse: (course) => dispatch(courseActions.createCourse(course))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursePage);
