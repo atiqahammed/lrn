@@ -1,0 +1,8 @@
+{
+  "name": "advanced",
+  "version": "1.0.0",
+  "description": "a develoment based on a tutorial",
+  "main": "lib/server.js",
+  "author": "Atiq Ahammed",
+  "license": "MIT"
+}
