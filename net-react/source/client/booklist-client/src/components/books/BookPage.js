@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getAuthors } from "../../api/authorApi";
-import AuthorList from "./AuthorList";
+// import AuthorList from "./AuthorList";
 // import { Link } from "react-router-dom";
 
-function AuthorPage () {
+function BookPage () {
 
-    const [authors, setAuthors] = useState([]);
+    const [books, setBooks] = useState([]);
 
     useEffect( () => {
         getAuthors().then((_authors) => {
