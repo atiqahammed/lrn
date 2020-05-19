@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { getAuthors } from "../../api/authorApi";
-// import AuthorList from "./AuthorList";
-// import { Link } from "react-router-dom";
+import { getBooks } from "../../api/bookApi";
+import BookList from "./BookList";
+import { Link } from "react-router-dom";
 
 function BookPage () {
 
     const [books, setBooks] = useState([]);
 
     useEffect( () => {
-        getAuthors().then((_authors) => {
-            setAuthors(_authors);
+        getBooks().then((_books) => {
+            setBooks(_books);
         });
     }, []);
   
@@ -17,12 +17,12 @@ function BookPage () {
       <>
         <div className="jumbotron">
             <h1>Authors</h1>
-          {/* <Link to="/author" className="btn btn-dark" component={ManageCoursePage}>Add New Course</Link> */}
+            <Link to="/book" className="btn btn-dark">Add New Book</Link>
         </div>
-        <AuthorList authors={authors}/>
+        <BookList books={books}/>
       </>
     );
   
 }
 
-export default AuthorPage;
+export default BookPage;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAuthors } from "../../api/authorApi";
 import AuthorList from "./AuthorList";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function AuthorPage () {
 
@@ -17,7 +17,7 @@ function AuthorPage () {
       <>
         <div className="jumbotron">
             <h1>Authors</h1>
-          {/* <Link to="/author" className="btn btn-dark" component={ManageCoursePage}>Add New Course</Link> */}
+          <Link to="/author" className="btn btn-dark">Add New Author</Link>
         </div>
         <AuthorList authors={authors}/>
       </>

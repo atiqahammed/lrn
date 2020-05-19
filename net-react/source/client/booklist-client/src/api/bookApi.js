@@ -1,18 +1,19 @@
 import fetch from 'node-fetch';
-const url = "/api/author/";
+const url = "/api/book/";
 
-
-export function getAuthors() {  
+export function getBooks() {  
   return fetch(url)
      .then((res) => {return res.json()});
 }
 
-export function getAuthor(id) {  
+export function getBook(id) {  
   return fetch(url + id)
      .then((res) => {return res.json()});
 }
 
-export function updateAuthor(author) {
+export function updateBook(book) {
+
+  const tempBook = {...book, authorId: Number(book.authorId) }
 
   const myHeaders = {
     "Content-Type": "application/json"
@@ -21,15 +22,15 @@ export function updateAuthor(author) {
   const requestOptions = {
     method: 'PUT',
     headers: myHeaders,
-    body: JSON.stringify(author)
+    body: JSON.stringify(tempBook)
   };
 
-  return fetch(url+author.id, requestOptions);
+  return fetch(url + book.id, requestOptions);
 }
 
-export function saveAuthor(author) {
+export function saveBook(book) {
 
-  const tempAuthor = {...author, id: Number(author.id)}
+  const tempBook = {...book, id: Number(book.id), authorId: Number(book.authorId) }
 
   const myHeaders = {
     "Content-Type": "application/json"
@@ -38,7 +39,7 @@ export function saveAuthor(author) {
   const requestOptions = {
     method: 'POST',
     headers: myHeaders,
-    body: JSON.stringify(tempAuthor)
+    body: JSON.stringify(tempBook)
   };
 
   return fetch(url, requestOptions);
