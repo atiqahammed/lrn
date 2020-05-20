@@ -67,7 +67,7 @@ function BookForm(props) {
     {/* <Dropdown options={options} onChange={props.onChange} value={defaultOption} placeholder="Select an option" /> */}
 
     <input type="submit" value="Save" className="btn btn-dark" /> {"   "}
-    <Link to="/books" class="btn btn-dark">Cancel</Link>
+    <Link to="/books" className="btn btn-dark">Cancel</Link>
     </form>
   );
 }

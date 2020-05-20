@@ -16,7 +16,7 @@ function BookPage () {
     return (
       <>
         <div className="jumbotron">
-            <h1>Authors</h1>
+            <h1>Books</h1>
             <Link to="/book" className="btn btn-dark">Add New Book</Link>
         </div>
         <BookList books={books}/>

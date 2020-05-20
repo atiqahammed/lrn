@@ -7,7 +7,7 @@ function Header() {
 
   	return (
 		<>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<nav className="navbar navbar-expand-lg navbar-light bg-light">
 				<NavLink className="nav-link" to="/" activeStyle={activeLinkStyle} exact><h4>Home</h4></NavLink>
 				<NavLink className="nav-link" to="/authors" activeStyle={activeLinkStyle} exact><h4>Authors</h4></NavLink>
                 <NavLink className="nav-link" to="/books" activeStyle={activeLinkStyle} exact><h4>Books</h4></NavLink>
