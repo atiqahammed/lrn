@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { getAuthors } from "../../api/authorApi";
+// import { getAuthors } from "../../api/authorApi";
 import AuthorList from "./AuthorList";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { loadAuthors } from "../../redux/actions/authorActions"
 
-function AuthorPage () {
+function AuthorPage (props) {
 
-    const [authors, setAuthors] = useState([]);
+    // const [authors, setAuthors] = useState([]);
 
-    useEffect( () => {
-        getAuthors().then((_authors) => {
-            setAuthors(_authors);
-        });
+    useEffect(() => {
+      props.loadAuthors();   
     }, []);
   
     return (
@@ -19,10 +19,20 @@ function AuthorPage () {
             <h1>Authors</h1>
           <Link to="/author" className="btn btn-dark">Add New Author</Link>
         </div>
-        <AuthorList authors={authors}/>
+        <AuthorList authors={props.authors}/>
       </>
     );
   
 }
 
-export default AuthorPage;
+function mapStateToProps(state) {
+  return {
+    authors: state.authors
+  }
+}
+
+const mapDispatchToProps = {
+  loadAuthors
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorPage);
