@@ -1,0 +1,4 @@
+SELECT DISTINCT 
+CITY 
+FROM STATION 
+WHERE NOT lower(SUBSTRING(CITY, LEN(CITY), 1)) in ('a','e','i','o','u');
