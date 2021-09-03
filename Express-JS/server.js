@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
 
@@ -10,14 +10,14 @@ app.get('/', (req, res) => {
     //res.status(500).send('Hi');
     //res.status(500).json({ message: 'Server Error.' });
     //res.json({ message: 'Access Granted.', username: 'atiq_ahammed' });
-    //res.send('Hi there...');
-    res.download('server.js');
+    res.send('Hi there...');
+    //res.download('server.js');
 
 });
 
 
-app.listen(3000);
+app.listen(PORT);
 
 
 
-//console.log("test");
+console.log(`Application running on : ${PORT}`);
