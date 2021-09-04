@@ -14,9 +14,15 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     log('in user post path');
-    info(`users first name :: ${req.body.firstName}`);
-    res.send('new user created');
 
+    if(req.body.firstName) {
+        users.push({ name : req.body.firstName });
+        info(`users first name :: ${req.body.firstName}`);
+        info(`new user created with name ${req.body.firstName}`);
+        res.render('users/Hi', {userName: req.body.firstName});
+    } else {    
+        res.send('something went wrong. could not create a new user')
+    }
 });
 
 router.get('/new', (req, res) => {
