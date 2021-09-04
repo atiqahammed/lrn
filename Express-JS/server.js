@@ -3,9 +3,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
+app.use(logger);
 
-
-app.get('/', (req, res) => {
+app.get('/', rootMiddleware, (req, res) => {
 
     console.log('here in the root path');
 
@@ -21,6 +21,21 @@ app.get('/', (req, res) => {
 
 const usersRouter = require('./routers/users');
 app.use('/users', usersRouter);
+
+function logger(req, res, next) {
+
+    const currentTime = new Date();
+    console.log(`requested on ${currentTime.toLocaleTimeString()}`);
+    console.log(`request path ${req.originalUrl}`);
+    next();
+}
+
+function rootMiddleware(req, res, next) {
+    console.log('this is only for root path');
+    console.log(req.originalUrl);
+    next();
+}
+
 
 
 app.listen(PORT);
