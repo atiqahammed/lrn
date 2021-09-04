@@ -36,4 +36,32 @@ router.get('/:userId', (req, res) => {
     }
 });
 
+router.put('/:userId', (req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`update user with userID: ${userId}`);
+        res.send(`update user with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
+});
+
+router.delete('/:userId', (req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`delete user with userID: ${userId}`);
+        res.send(`delete user with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
+});
+
 module.exports = router;
