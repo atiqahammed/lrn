@@ -1,23 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const { info, warn, log, error, indent } = require('pretty-console-logs');
+
+router.use(logger);
 
 router.get('/', (req, res) => {
 
-    console.log('in user route');
+    log('in user route');
     res.send('all users list is here');
 
 });
 
 router.post('/', (req, res) => {
 
-    console.log('in user post path');
+    log('in user post path');
     res.send('new user created');
 
 });
 
 router.get('/new', (req, res) => {
 
-    console.log('in user/new route');
+    log('in user/new route');
     res.send('new user added');
 
 });
@@ -26,15 +29,15 @@ router.get('/new', (req, res) => {
 // note: single paramter route is being used for multiple request method.
 router.route('/:userId').get((req, res) => {
 
-    console.log(req.user)
+    info(JSON.stringify(req.user));
     const userId = req.params.userId || '';
 
     if(userId) {
 
-        console.log(`requested with userID: ${userId}`);
+        info(`requested with userID: ${userId}`);
         res.send(`requested with userID: ${userId}`);
     } else {
-        console.log('invalid userID');
+        warn('invalid userID');
         res.send('invalid userID');
     }
 }).put((req, res) => {
@@ -43,10 +46,10 @@ router.route('/:userId').get((req, res) => {
 
     if(userId) {
 
-        console.log(`update user with userID: ${userId}`);
+        log(`update user with userID: ${userId}`);
         res.send(`update user with userID: ${userId}`);
     } else {
-        console.log('invalid userID');
+        warn('invalid userID');
         res.send('invalid userID');
     }
 }).delete((req, res) => {
@@ -55,10 +58,10 @@ router.route('/:userId').get((req, res) => {
 
     if(userId) {
 
-        console.log(`delete user with userID: ${userId}`);
+        info(`delete user with userID: ${userId}`);
         res.send(`delete user with userID: ${userId}`);
     } else {
-        console.log('invalid userID');
+        warn('invalid userID');
         res.send('invalid userID');
     }
 });
@@ -77,6 +80,13 @@ router.param('userId', (req, res, next, userId) => {
 
 });
 
+function logger(req, res, next) {
 
+    log(`be concern with user information. ):(`);
+    const currentTime = new Date();
+    info(`requested on user path:: ${currentTime.toLocaleTimeString()}`);
+    info(`in user path request path:: ${req.originalUrl}`);
+    next();
+}
 
 module.exports = router;

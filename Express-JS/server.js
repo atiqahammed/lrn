@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const { info, warn, log, error, indent } = require('pretty-console-logs');
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
@@ -7,7 +8,7 @@ app.use(logger);
 
 app.get('/', rootMiddleware, (req, res) => {
 
-    console.log('here in the root path');
+    log('here in the root path');
 
     //res.sendStatus(500);
     //res.status(500).send('Hi');
@@ -25,14 +26,14 @@ app.use('/users', usersRouter);
 function logger(req, res, next) {
 
     const currentTime = new Date();
-    console.log(`requested on ${currentTime.toLocaleTimeString()}`);
-    console.log(`request path ${req.originalUrl}`);
+    log(`requested on ${currentTime.toLocaleTimeString()}`);
+    log(`request path ${req.originalUrl}`);
     next();
 }
 
 function rootMiddleware(req, res, next) {
-    console.log('this is only for root path');
-    console.log(req.originalUrl);
+    log('this is only for root path');
+    warn(req.originalUrl);
     next();
 }
 
@@ -40,4 +41,4 @@ function rootMiddleware(req, res, next) {
 
 app.listen(PORT);
 
-console.log(`Application running on : ${PORT}`);
+info(`Application running on : ${PORT}`);
