@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 
     log('in user post path');
+    info(`users first name :: ${req.body.firstName}`);
     res.send('new user created');
 
 });
@@ -21,7 +22,7 @@ router.post('/', (req, res) => {
 router.get('/new', (req, res) => {
 
     log('in user/new route');
-    res.send('new user added');
+    res.render('users/new', {firstName: 'FirstName'})
 
 });
 

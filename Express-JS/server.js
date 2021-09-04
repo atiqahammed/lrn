@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(logger);
+app.use(express.urlencoded({extended: true}));
 
 app.get('/', rootMiddleware, (req, res) => {
 
