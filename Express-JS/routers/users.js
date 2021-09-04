@@ -22,6 +22,47 @@ router.get('/new', (req, res) => {
 
 });
 
+
+// note: single paramter route is being used for multiple request method.
+router.route('/:userId').get((req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`requested with userID: ${userId}`);
+        res.send(`requested with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
+}).put((req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`update user with userID: ${userId}`);
+        res.send(`update user with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
+}).delete((req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`delete user with userID: ${userId}`);
+        res.send(`delete user with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
+});
+
+/*
 router.get('/:userId', (req, res) => {
 
     const userId = req.params.userId || '';
@@ -62,6 +103,6 @@ router.delete('/:userId', (req, res) => {
         console.log('invalid userID');
         res.send('invalid userID');
     }
-});
+});*/
 
 module.exports = router;
