@@ -26,6 +26,7 @@ router.get('/new', (req, res) => {
 // note: single paramter route is being used for multiple request method.
 router.route('/:userId').get((req, res) => {
 
+    console.log(req.user)
     const userId = req.params.userId || '';
 
     if(userId) {
@@ -62,47 +63,20 @@ router.route('/:userId').get((req, res) => {
     }
 });
 
-/*
-router.get('/:userId', (req, res) => {
+const users = [{name: 'Atiq'}, {name: 'Ahammed'}];
 
-    const userId = req.params.userId || '';
+router.param('userId', (req, res, next, userId) => {
 
-    if(userId) {
-
-        console.log(`requested with userID: ${userId}`);
-        res.send(`requested with userID: ${userId}`);
+    if(userId && userId.length > 0 && userId.length % 2 == 0) {
+        req.user = users[0];
     } else {
-        console.log('invalid userID');
-        res.send('invalid userID');
+        req.user = users[1];
     }
+
+    next();
+
 });
 
-router.put('/:userId', (req, res) => {
 
-    const userId = req.params.userId || '';
-
-    if(userId) {
-
-        console.log(`update user with userID: ${userId}`);
-        res.send(`update user with userID: ${userId}`);
-    } else {
-        console.log('invalid userID');
-        res.send('invalid userID');
-    }
-});
-
-router.delete('/:userId', (req, res) => {
-
-    const userId = req.params.userId || '';
-
-    if(userId) {
-
-        console.log(`delete user with userID: ${userId}`);
-        res.send(`delete user with userID: ${userId}`);
-    } else {
-        console.log('invalid userID');
-        res.send('invalid userID');
-    }
-});*/
 
 module.exports = router;
