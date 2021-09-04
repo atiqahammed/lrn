@@ -8,12 +8,32 @@ router.get('/', (req, res) => {
 
 });
 
+router.post('/', (req, res) => {
+
+    console.log('in user post path');
+    res.send('new user created');
+
+});
 
 router.get('/new', (req, res) => {
 
     console.log('in user/new route');
     res.send('new user added');
 
+});
+
+router.get('/:userId', (req, res) => {
+
+    const userId = req.params.userId || '';
+
+    if(userId) {
+
+        console.log(`requested with userID: ${userId}`);
+        res.send(`requested with userID: ${userId}`);
+    } else {
+        console.log('invalid userID');
+        res.send('invalid userID');
+    }
 });
 
 module.exports = router;
